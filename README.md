@@ -4,42 +4,6 @@
 
 **BlogApp**は、ユーザーが記事を作成、閲覧、編集、削除できるシンプルなブログアプリケーション。Ruby on Railsをバックエンドに、Reactをフロントエンドに使用し、モダンなWeb開発の実践例となっている。
 
-## ディレクトリ構成
-blog_app/
-├── app/
-│   ├── assets/              # スタイルシートやJavaScriptなどのフロントエンド資産
-│   │   ├── builds/          # ESBuildによってビルドされたファイル
-│   │   ├── config/          # Sprockets用の設定ファイル
-│   │   └── stylesheets/     # SCSSファイル
-│   ├── controllers/         # Railsコントローラ
-│   │   └── articles_controller.rb   # Articlesコントローラ
-│   ├── javascript/          # フロントエンド用のJavaScript/Reactコード
-│   │   ├── components/      # Reactコンポーネント
-│   │   │   └── Articles.js  # 記事管理用のReactコンポーネント
-│   │   └── application.js   # Reactコンポーネントをマウントするエントリーポイント
-│   ├── models/              # ActiveRecordモデル
-│   │   └── article.rb       # Articleモデル
-│   ├── views/               # ビュー（HTMLテンプレート）
-│   │   └── layouts/         # レイアウトテンプレート
-│   │       └── application.html.erb  # メインレイアウト
-│   └── helpers/             # ヘルパーモジュール
-│
-├── config/                  # アプリケーション全体の設定ファイル
-│   ├── routes.rb            # ルーティングの設定
-│   └── database.yml         # データベースの設定
-│
-├── db/                      # データベース関連ファイル
-│   ├── migrate/             # マイグレーションファイル
-│   │   └── 20240820000000_create_articles.rb  # Articlesテーブルの作成マイグレーション
-│   └── schema.rb            # 現在のデータベーススキーマ
-│
-├── public/                  # 公開用の静的ファイル
-├── test/                    # テストコード
-├── Gemfile                  # 使用するGemの定義ファイル
-├── package.json             # Node.jsパッケージの定義ファイル
-├── Rakefile                 # タスクを定義するファイル
-└── README.md                # プロジェクトの説明（このファイル）
-
 ## プログラムの内容説明
 
 ### 1. **アーキテクチャ**
@@ -258,7 +222,7 @@ return (
   - `views`の状態に応じて、`renderIndexView`、`renderShowView`、`renderFormView`のいずれかを表示する。これにより、記事の一覧表示、詳細表示、フォーム表示を切り替えることができる。
 
 
-### **エントリーポイントでのReactコンポーネントの読み込み**
+## **エントリーポイントでのReactコンポーネントの読み込み**
 
 Reactコンポーネントをブラウザに表示するためには、エントリーポイントである`application.js`ファイルにこのコンポーネントをインポートし、ReactDOMを使用してコンポーネントをDOMにレンダリングする。
 
@@ -286,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 - **`root`要素**:
   - `index.html.erb`（後述）にある`<div id="root"></div>`要素に`Articles`コンポーネントがレンダリングされる。
 
-### **Railsビューへの埋め込み**
+## **Railsビューへの埋め込み**
 
 Reactコンポーネントを含むJavaScriptは、Railsのビューに埋め込まれる。Railsのレイアウトファイル`application.html.erb`がその役割を果たす。
 
