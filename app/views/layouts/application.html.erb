@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <titile>BlogApp for React</titile>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -10,6 +9,20 @@
   </head>
 
   <body>
+    <header class="bg-gray-800 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-lg font-bold"><%= link_to 'BlogApp', root_path %></h1>
+        <nav>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit Profile', edit_user_registration_path, class: "mr-4" %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "mr-4" %>
+          <% else %>
+            <%= link_to 'Sign Up', new_user_registration_path, class: "mr-4" %>
+            <%= link_to 'Login', new_user_session_path, class: "mr-4" %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
     <div id="react-articles"></div>
     <%= yield %>
   </body>

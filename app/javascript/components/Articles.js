@@ -103,7 +103,8 @@ function Articles() {
                 {articles.map(article => (
                     <li key={article.id} className="bg-white shadow-md rounded-lg p-4">
                         <h2 className="text-xl font-semibold text-gray-800 mb-2">{article.title}</h2>
-                        <div className="space-x-2">
+                        <p className="text-gray-500 text-sm">By User ID: {article.user ? article.user.id : 'Unknown Author'}</p>
+                        <div className="space-x-2 mt-2">
                             <button 
                                 onClick={() => setViews('show') & setCurrentArticle(article)}
                                 className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded text-sm"
