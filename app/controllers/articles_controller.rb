@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :update, :destroy]  # 認証が必要なアクションを制限
-  
+    before_action :authenticate_user!, only: [ :create, :update, :destroy ]  # 認証が必要なアクションを制限
+
     def index
         @articles = Article.includes(:user).all
         respond_to do |format|
@@ -8,12 +8,12 @@ class ArticlesController < ApplicationController
           format.html
         end
       end
-    
+
       def show
         @article = Article.find(params[:id])
         render json: @article.to_json(include: :user)
       end
-  
+
     def create
         @article = current_user.articles.new(article_params)
         if @article.save
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
           render json: @article.errors, status: :unprocessable_entity
         end
       end
-  
+
     def update
       @article = Article.find(params[:id])
       if @article.update(article_params)
@@ -31,16 +31,16 @@ class ArticlesController < ApplicationController
         render json: @article.errors, status: :unprocessable_entity
       end
     end
-  
+
     def destroy
       @article = Article.find(params[:id])
       @article.destroy
       head :no_content
     end
-  
+
     private
-  
+
     def article_params
       params.require(:article).permit(:title, :body)
     end
-  end
+end
