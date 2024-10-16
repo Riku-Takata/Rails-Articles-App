@@ -62,4 +62,4 @@ end
 
 gem "jsbundling-rails", "~> 1.3"
 
-gem "tailwindcss-rails", "~> 2.7"
+gem "tailwindcss-rails", "~> 3.0"
